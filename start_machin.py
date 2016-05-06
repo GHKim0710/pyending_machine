@@ -9,17 +9,32 @@ menu = [사리다 ,콤디션 ,포가리]
 # ==========================
 # 화면 출력을 위한 함수
 
-def dp_menu():
-    # 자판기 화면에서 메뉴 부분을 출력해주는 함수
-    print("| 번호 |   제품명 |    가격 |")
-    for can in menu:
-        print("| {0:<4} | {1:>5} | {2:>5}원 |".format (can["num"] ,can["name"] ,can["price"]))
+def dp_menu(mode=0,coin=0):
+    '''
 
-def dp():
+    :param mode: 0 = 제품 전체 출력, 1 = 구입가능한 제품만 출력
+    :param coin: 자판기에 들어간 돈
+    :return:
+    '''
+    #제품 전체 출력
+    if mode == 0:
+        print("| 번호 |   제품명 |    가격 |")
+        for can in menu:
+            print("| {0:<4} | {1:>5} | {2:>5}원 |".format (can["num"] ,can["name"] ,can["price"]))
+    elif mode == 1:
+        memu_buy = []
+        #구매 가능한 제품만 추리기
+        for can in menu:
+            if can["price"] <= coin:
+                memu_buy.append(can)
+        for can in memu_buy:
+            print("| {0:<4} | {1:>5} | {2:>5}원 |".format(can["num"], can["name"], can["price"]))
+
+def dp(mode=0,coin = 0):
     print("_____________________________")
     print("|   시원한 음료수 자판기    |")
     print("+======+==========+=========+")
-    dp_menu()
+    dp_menu(mode,coin)
     print("+======+==========+=========+")
     print("-----------------------------")
 
@@ -47,11 +62,8 @@ def coin():
         except:
             print("숫자만 입력해주세요")
             continue
-        if coin > co_max:
-            print("최대 5000원까지만 넣어주세요")
-            continue
-        elif coin < co_min:
-            print("최소 {0}원보다 더 넣어주세요")
+        if co_min < coin or coin > co_max:
+            print("최소 {0}원, 최대 {1}원까지만 넣어주세요".format(co_min,co_max))
             continue
         else:
             break
@@ -64,7 +76,17 @@ def can_list():
         num_list.append(can["number"])
     return num_list
 
-def can():
+def can(coin):
+    num_list = can_list()
+    while True:
+        dp(1,coin)
+        can = input("원하는 제품의 숫자를 입력해주세요")
+        if can not in num_list:
+            print("{}중 하나를 선택해 주세요")
+            continue
+        # [] 제품 오류 검증 추가 해야함
+        elif
+
     pass
 
 def result():
@@ -73,4 +95,5 @@ def result():
 
 
 dp()
-coin()
+coin = coin()
+can(coin)
