@@ -62,39 +62,51 @@ def coin():
         except:
             print("숫자만 입력해주세요")
             continue
-        if co_min < coin or coin > co_max:
+        if co_min > coin or coin > co_max:
             print("최소 {0}원, 최대 {1}원까지만 넣어주세요".format(co_min,co_max))
             continue
         else:
             break
     return coin
 
-def can_list():
+def num_list() -> object:
     # 제품의 숫자 목록을 반환하는 함수
     num_list = []
-    for can in memu:
-        num_list.append(can["number"])
+    for can in menu:
+        num_list.append(can["num"])
     return num_list
 
+# 원하는 제품 번호의 제품명을 알려주는 함수
+def can_find(num):
+    for i in menu:
+        if num == i["num"]:
+            return i
+
+
 def can(coin):
-    num_list = can_list()
+    list = num_list()
     while True:
-        dp(1,coin)
+        dp(1,coin)  #구매 가능한 제품만 출력
         can = input("원하는 제품의 숫자를 입력해주세요")
-        if can not in num_list:
-            print("{}중 하나를 선택해 주세요")
+        try:
+            can = int(can)
+        except:
+            print("숫자만 입력해주세요")
             continue
-        # [] 제품 오류 검증 추가 해야함
-        elif
+        if can not in list: #메뉴에 있지 않은 제품 입력시
+            print("{0}중 하나를 선택해 주세요".format(list))
+            continue
+        elif can_find(can)["price"] > coin: # 제품을 구매 할수 있는지 검증
+            print("{0}원 보다 낮은 제품을 선택해주세요".format(coin))
+            continue
+        else:
+            break
+    name = can_find(can)["name"]
+    price = can_find(can)["price"]
+    change = coin-price
+    print("{0}을 드렸습니다. 거스름돈은 {1}원 입니다.".format(name,change))
 
-
-    pass
-
-def result():
-    pass
-
-
-
+#프로그램 시작
 dp()
 coin = coin()
 can(coin)
