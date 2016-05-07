@@ -16,3 +16,5 @@ pyending machin은 [everypython](http://everypython.com)에서 연재할 포스�
 ### part3 - [예정] 리펙토링 : 객체지향 프로그래밍을 통해 리펙토링 하기.
 
 ### part4 - [예정] GUI : Kivy를 이용해 GUI자판기 제작하기.
+
+### part5 - [예정] nosql : levelDB를 이용하여 sql을 nosql로 대체해보기
