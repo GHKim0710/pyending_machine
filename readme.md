@@ -9,7 +9,7 @@ pyending machin은 [everypython](http://everypython.com)에서 연재할 포스�
 
 ##브렌치에 따른 분류
 
-### base - [완료] 자판기 프로그램 초안 입니다. 일단 구현에 목적을 두고 코딩되었으며 이는 추후 다듬는 과정을 보여드리기 위함입니다.
+### [base](https://github.com/wesky93/pyending_machine/tree/base) - [완료] 자판기 프로그램 초안 입니다. 일단 구현에 목적을 두고 코딩되었으며 이는 추후 다듬는 과정을 보여드리기 위함입니다.
 
 ### part2 - [작업중] DB :DB를 이용하여 재고를 관리 & 관리자 모드 추가 & log 활용
 
