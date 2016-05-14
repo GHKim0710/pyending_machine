@@ -17,6 +17,7 @@ def 아이템추가(번호, 음료명, 재고):
         print("DB연결")
         질의 = DB.cursor()
         print("커서 연결")
+        질의.execute('INSERT INTO item VALUES ({0},\"{1}\",{2})'.format(번호,음료명,재고))
         print("자료 추가")
         DB.commit()
         print("db 커밋")
@@ -34,7 +35,7 @@ def 아이템조회():
         for row in 질의:
             print(row)
 
-아이템추가(3,"헉개수",10)
+아이템추가(4,"고코팡",13)
 
 #아이템 추가 함수 오류로 인한 확인용 구문
 #DB의 연결 문제인지 insert 구문 오류인지 판단하기 위함
