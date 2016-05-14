@@ -9,6 +9,7 @@ db = "test.db"
 -- 현재 insert에서의 문제로 작동 불가
 --  sql명령어가 ""로 쌓여 있기에 변수가 대입되지 않은것으로 추론됨
 --  실제로 책에선 플레이스 홀더를 통하여 대입을 하지 직접 변수를 넣지 않음
+--  위 문제와 더불어 명령어가 ""로 감싸있기에 format 문자열 변수를 대입하더라도 ""로 감싸주어 문자열이라는 표시가 도어야 한다.
 '''
 def 아이템추가(번호, 음료명, 재고):
     print("함수 시작",db)
@@ -16,9 +17,8 @@ def 아이템추가(번호, 음료명, 재고):
         print("DB연결")
         질의 = DB.cursor()
         print("커서 연결")
-        질의.execute('INSERT INTO item (num, name, count) VALUES ({0},{2},{1})'.format(번호,재고,음료명))
         print("자료 추가")
-        질의.commit()
+        DB.commit()
         print("db 커밋")
         print("{1}을 {0}번에 추가하였습니다.".format(번호,음료명))
 
