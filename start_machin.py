@@ -1,17 +1,15 @@
-
 # 간이 자판기 프로그램 입니다.
 # 자판기에 들어가는 제품
-사리다 = {"num": 1, "name": "사리다", "price": 800}
-콤디션 = {"num": 2, "name": "콤디션", "price": 1500}
-포가리 = {"num": 3, "name": "포가리", "price": 1000}
-menu = [사리다 ,콤디션 ,포가리]
-# ------------------------------
+사이다 = {"num": 1, "name": "사이다", "price": 800}
+컨디션 = {"num": 2, "name": "컨디션", "price": 1500}
+포카리 = {"num": 3, "name": "포카리", "price": 1000}
+콜라 = {"num": 4, "name": "콜라", "price": 2000}
+커피 = {"num": 5, "name": "커피", "price": 3000}
+menu = [사이다 ,컨디션 ,포카리, 콜라, 커피]
 # ==========================
 # 화면 출력을 위한 함수
-
 def dp_menu(mode=0,coin=0):
     '''
-
     :param mode: 0 = 제품 전체 출력, 1 = 구입가능한 제품만 출력
     :param coin: 자판기에 들어간 돈
     :return:
@@ -31,8 +29,8 @@ def dp_menu(mode=0,coin=0):
             print("| {0:<4} | {1:>5} | {2:>5}원 |".format(can["num"], can["name"], can["price"]))
 
 def dp(mode=0,coin = 0):
-    print("_____________________________")
-    print("|   시원한 음료수 자판기    |")
+    print("=============================")
+    print("|       음료수 자판기        |")
     print("+======+==========+=========+")
     dp_menu(mode,coin)
     print("+======+==========+=========+")
@@ -53,7 +51,7 @@ def coin_min():
 def coin():
     # 투입 가능한 돈의 최대,최소 값
     co_min = coin_min()
-    co_max = 5000
+    co_max = 10000
     # 돈을 입력받고 오류를 검증
     while True:
         coin = input("돈을 넣어주세요 :")
@@ -110,3 +108,4 @@ def can(coin):
 dp()
 coin = coin()
 can(coin)
+
