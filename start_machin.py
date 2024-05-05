@@ -1,10 +1,10 @@
 # 간이 자판기 프로그램 입니다.
 # 자판기에 들어가는 제품                 추가 : quantity - 재고량 / quantity_sold - 판매량
-사이다 = {"num": 1, "name": "사이다", "price": 800, "quantity": 10, "quantity_sold":0}
+사이다 = {"num": 1, "name": "사이다", "price": 800, "quantity": 0, "quantity_sold":0}
 컨디션 = {"num": 2, "name": "컨디션", "price": 1500, "quantity": 10, "quantity_sold":0}
 포카리 = {"num": 3, "name": "포카리", "price": 1000, "quantity": 10, "quantity_sold":0}
-콜라 = {"num": 4, "name": "콜라  ", "price": 2000, "quantity": 10, "quantity_sold":0}
-커피 = {"num": 5, "name": "커피  ", "price": 3000, "quantity": 10, "quantity_sold":0}
+콜라 = {"num": 4, "name": "콜라", "price": 2000, "quantity": 10, "quantity_sold":0}
+커피 = {"num": 5, "name": "커피", "price": 3000, "quantity": 10, "quantity_sold":0}
 menu = [사이다 ,컨디션 ,포카리, 콜라, 커피]
 # ==========================
 # 화면 출력을 위한 함수
@@ -23,10 +23,8 @@ def dp_menu(mode=0,coin=0):
         memu_buy = []
         #구매 가능한 제품만 추리기
         for can in menu:
-            if can["price"] <= coin and can["quantity"] > 0: # 추가 : 
+            if can["price"] <= coin and can["quantity"] > 0: # 추가 : "and can["quantity"] > 0" 추가됨, 재고량은 0개 이상이여야 한다.
                 memu_buy.append(can)
-        if not menu_buy: # 추가 : 구매 가능한 제품이 없을 경우
-            print("구매 가능한 제품이 없거나 모두 품절되었습니다.")
         else:
             for can in memu_buy:
                 print("| {0:<4} | {1:>5} | {2:>5}원| {3:>5}개 |".format(can["num"], can["name"], can["price"], can["quantity"]))
@@ -100,7 +98,7 @@ def can(coin):
         elif can_find(can)["price"] > coin: # 제품을 구매 할수 있는지 검증
             print("{0}원 보다 낮은 제품을 선택해주세요".format(coin))
             continue
-        elif can_find(can)["quantity"] <= 0: # 추가 : 제품의 재고가 없을 경우
+        elif can_find(can)["quantity"] <= 0: # 추가 : 제품의 재고가 없을 경우 품절 표기
             print("{0}는(은) 품절되었습니다.".format(can_find(can)["name"]))
             continue
         else:
